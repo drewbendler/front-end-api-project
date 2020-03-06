@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 50px 600px;
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  background-color: greenyellow;
+}
+
+.sidebar {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  background-color: gray;
+  max-height: 100%;
+}
+
+.dataContainer {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 5px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
