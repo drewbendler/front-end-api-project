@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App';
 import './Data.css';
+import './DashBoard.css';
 
 const emissionsUrl = 'http://localhost:4000/emissions/';
 const climateUrl = 'localhost:4000/climate';
@@ -17,27 +18,44 @@ class Data extends Component {
     window.scrollTo(0, 0);
     if (!this.state.data) {
       fetch('http://localhost:4000/emissions')
-        .then(res => res.json())
-        .then(res => {
+        .then(countryRes => countryRes.json())
+        .then(countryRes => {
           this.setState({
-            data: res
+            data: countryRes
           });
-          console.log(res);
+          console.log(countryRes);
         });
     }
   }
   render() {
     if (this.state.data) {
       let dataset = this.state.data.map(item => {
-        if (item.Year === 2014) {
+        if (item.Year === 2011) {
           return (
-            <div className="eachReturn">
-              {item.Country}, {'total emissions: ' + item.Total}, {item.Year}
+            <div className="data-grid">
+              <div className="countryName">{item.Country}</div>
+              <div className="countryTotalFuel">{item.Total}</div>
+              <div className="countryGasFuel">{item.GasFuel}</div>
+              <div className="countrySolidFuel">{item.SolidFuel}</div>
+              {/* <div className="countryLiquidFuel">{item.LiquidFuel}</div> */}
+              {/* <div className="countryPerCapita">{item.PerCapita}</div> */}
+              <div className="countryYear">{item.Year}</div>
             </div>
           );
         }
       });
-      return <div className="dataContainer">{dataset}</div>;
+      return (
+        <div className="dContainer">
+          <div className="labels">
+            <h2>Country</h2>
+            <h2>Total Fuel Emissions</h2>
+            <h2>Gas Fuel</h2>
+            <h2>Solid Fuel</h2>
+            <h2>Year</h2>
+          </div>
+          {dataset}
+        </div>
+      );
     } else {
       return (
         <div>

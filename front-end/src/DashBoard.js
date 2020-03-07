@@ -13,7 +13,7 @@ class DashBoard extends Component {
           <Header />
         </div>
 
-        <div className="data">
+        <div className="dataContainer">
           <Data />
         </div>
         <div className="sidebar">
