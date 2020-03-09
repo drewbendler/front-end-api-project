@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import './App';
+import { Link, Route } from 'react-router-dom';
+import DashBoard from './DashBoard';
 
 class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar">
-        <h2>Emissions</h2>
-        <h2>Climate</h2>
-        <h2>Glacier</h2>
+        <Link to="/emissions">
+          <h3>Emissions</h3>
+        </Link>
+
+        <Link to="/climate">
+          <h3>Climate</h3>
+        </Link>
+
+        <Link to="/glacier">
+          <h3>Glacier</h3>
+        </Link>
       </div>
     );
   }

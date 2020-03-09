@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App';
 import Header from './Header';
-import Data from './Data';
+import EmissionData from './EmissionData';
+import ClimateData from './ClimateData';
+import GlacierData from './GlacierData';
 import Sidebar from './Sidebar';
 import './DashBoard.css';
+import { Link, Route } from 'react-router-dom';
 
 class DashBoard extends Component {
   render() {
@@ -14,8 +17,38 @@ class DashBoard extends Component {
         </div>
 
         <div className="dataContainer">
-          <Data />
+          <Route
+            path="/emissions"
+            render={routerProps => (
+              <EmissionData
+                setId={this.setId}
+                {...routerProps}
+                {...this.state}
+              />
+            )}
+          />
+          <Route
+            path="/climate"
+            render={routerProps => (
+              <ClimateData
+                setId={this.setId}
+                {...routerProps}
+                {...this.state}
+              />
+            )}
+          />
+          <Route
+            path="/glacier"
+            render={routerProps => (
+              <GlacierData
+                setId={this.setId}
+                {...routerProps}
+                {...this.state}
+              />
+            )}
+          />
         </div>
+
         <div className="sidebar">
           <Sidebar />
         </div>

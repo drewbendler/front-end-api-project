@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DashBoard from './DashBoard';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <DashBoard />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null
+    };
+    this.setId = this.setId.bind(this);
+  }
+  setId(id) {
+    this.setState({ id: id });
+  }
+  render() {
+    return (
+      <div>
+        <DashBoard />
+      </div>
+    );
+  }
 }
 
 export default App;
