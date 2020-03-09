@@ -36,15 +36,13 @@ class GlacierData extends Component {
         );
       });
       return (
-        <div>
+        <div className="dContainer">
           <div className="glacierLabels">
             <h2>Mean Mass</h2>
             <h2>Observations</h2>
             <h2>Year</h2>
           </div>
-          <div className="dContainer">
-            <div className="dataset">{dataset}</div>
-          </div>
+          <div className="dataset">{dataset}</div>
         </div>
       );
     } else {

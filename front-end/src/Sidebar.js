@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App';
 import { Link, Route } from 'react-router-dom';
 import DashBoard from './DashBoard';
+import './DashBoard.css';
 
 class Sidebar extends Component {
   render() {

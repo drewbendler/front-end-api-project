@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App';
 import './DashBoard.css';
+import SearchBar from './SearchBar';
 
 const climateUrl = 'http://localhost:4000/climate';
-const glacierUrl = 'localhost:4000/glacier';
 
 class ClimateData extends Component {
   constructor(props) {
@@ -28,6 +28,8 @@ class ClimateData extends Component {
   render() {
     if (this.state.data) {
       let dataset = this.state.data.map(item => {
+        // if (item.Year === SearchBar.state) {
+        console.log(SearchBar.state);
         return (
           <div className="climateData-grid">
             <div className="mean">{item.Mean}</div>
@@ -35,6 +37,7 @@ class ClimateData extends Component {
             <div className="year">{item.Year}</div>
           </div>
         );
+        // }
       });
       return (
         <div>
