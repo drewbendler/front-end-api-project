@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DashBoard from './DashBoard';
 import './App.css';
+import SearchBar from './SearchBar';
 
 class App extends Component {
   constructor(props) {
@@ -21,5 +22,5 @@ class App extends Component {
     );
   }
 }
-
+// console.log(SearchBar.this.props);
 export default App;

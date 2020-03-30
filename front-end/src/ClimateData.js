@@ -28,7 +28,6 @@ class ClimateData extends Component {
   render() {
     if (this.state.data) {
       let dataset = this.state.data.map(item => {
-        // if (item.Year === SearchBar.state) {
         console.log(SearchBar.state);
         return (
           <div className="climateData-grid">
@@ -37,7 +36,6 @@ class ClimateData extends Component {
             <div className="year">{item.Year}</div>
           </div>
         );
-        // }
       });
       return (
         <div>

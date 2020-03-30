@@ -10,9 +10,11 @@ class EmissionData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+      year: ''
     };
   }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     if (!this.state.data) {
@@ -22,14 +24,23 @@ class EmissionData extends Component {
           this.setState({
             data: countryRes
           });
-          console.log(countryRes);
+          // console.log(countryRes);
         });
     }
   }
+
+  toSearch = e => {
+    e.preventDefault();
+    this.setState({
+      year: e.target.value
+    });
+    console.log(this.state.year);
+  };
+
   render() {
     if (this.state.data) {
       let dataset = this.state.data.map(item => {
-        if (item.Year === 2014) {
+        if (item.Year == this.state.year) {
           return (
             <div className="data-grid">
               <div className="countryName">{item.Country}</div>
@@ -37,7 +48,6 @@ class EmissionData extends Component {
               <div className="countryGasFuel">{item.GasFuel}</div>
               <div className="countrySolidFuel">{item.SolidFuel}</div>
               <div className="countryLiquidFuel">{item.LiquidFuel}</div>
-              {/* <div className="countryPerCapita">{item.PerCapita}</div> */}
               <div className="countryYear">{item.Year}</div>
             </div>
           );
@@ -46,12 +56,28 @@ class EmissionData extends Component {
       return (
         <div>
           <div className="emissionLabels">
-            <h2>Country</h2>
-            <h2>Total Fuel Emissions</h2>
-            <h2>Gas Fuel</h2>
-            <h2>Liquid Fuel</h2>
-            <h2>Solid Fuel</h2>
-            <h2>Year</h2>
+            <div className="form">
+              <label>
+                <form onClick={this.toSearch}>
+                  <label>
+                    Search Year 1998-2014:
+                    <input
+                      type="text"
+                      className="searchbar"
+                      onChange={this.toSearch}
+                    ></input>
+                  </label>
+                </form>
+              </label>
+            </div>
+            <div className="labels">
+              <h2>Country</h2>
+              <h2>Total Fuel Emissions</h2>
+              <h2>Gas Fuel</h2>
+              <h2>Liquid Fuel</h2>
+              <h2>Solid Fuel</h2>
+              <h2>Year</h2>
+            </div>
           </div>
           <div className="dContainer">
             <div className="dataset">{dataset}</div>
