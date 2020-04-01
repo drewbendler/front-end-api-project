@@ -19,6 +19,16 @@ class Sidebar extends Component {
         <Link to="/glacier">
           <h3>Glacier</h3>
         </Link>
+
+        <div className="legend">
+          <h4>Legend</h4>
+          <p>Emission data is per metric ton</p>
+          <p>
+            Climate and Emission data is a percentage increase relative to 1980
+          </p>
+          <p>* GCAG: Climate at a Glance</p>
+          <p>* GISTEMP: Surface Temperature</p>
+        </div>
       </div>
     );
   }

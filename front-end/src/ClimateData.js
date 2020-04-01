@@ -31,7 +31,7 @@ class ClimateData extends Component {
         console.log(SearchBar.state);
         return (
           <div className="climateData-grid">
-            <div className="mean">{item.Mean}</div>
+            <div className="mean">{'+' + item.Mean + '%'}</div>
             <div className="source">{item.Source}</div>
             <div className="year">{item.Year}</div>
           </div>
@@ -39,12 +39,12 @@ class ClimateData extends Component {
       });
       return (
         <div>
-          <div className="climateLabels">
-            <h2>Mean</h2>
-            <h2>Source</h2>
-            <h2>Year</h2>
-          </div>
           <div className="dContainer">
+            <div className="climateLabels">
+              <h2>Mean</h2>
+              <h2>Source</h2>
+              <h2>Year</h2>
+            </div>
             <div className="dataset">{dataset}</div>
           </div>
         </div>

@@ -11,7 +11,8 @@ class EmissionData extends Component {
     super(props);
     this.state = {
       data: null,
-      year: ''
+      year: '',
+      country: null
     };
   }
 
@@ -37,14 +38,28 @@ class EmissionData extends Component {
     console.log(this.state.year);
   };
 
+  toSearchCountry = e => {
+    e.preventDefault();
+    this.setState({
+      country: e.target.value
+    });
+  };
+
   render() {
     if (this.state.data) {
       let dataset = this.state.data.map(item => {
-        if (item.Year == this.state.year) {
+        if (
+          item.Year == this.state.year ||
+          item.Country == this.state.country
+        ) {
           return (
             <div className="data-grid">
-              <div className="countryName">{item.Country}</div>
-              <div className="countryTotalFuel">{item.Total}</div>
+              <div className="countryName">
+                <span className="countryName">{item.Country}</span>
+              </div>
+              <div className="countryTotalFuel">
+                <span className="totalFuel">{item.Total}</span>
+              </div>
               <div className="countryGasFuel">{item.GasFuel}</div>
               <div className="countrySolidFuel">{item.SolidFuel}</div>
               <div className="countryLiquidFuel">{item.LiquidFuel}</div>
@@ -57,18 +72,26 @@ class EmissionData extends Component {
         <div>
           <div className="emissionLabels">
             <div className="form">
-              <label>
-                <form onClick={this.toSearch}>
-                  <label>
-                    Search Year 1998-2014:
-                    <input
-                      type="text"
-                      className="searchbar"
-                      onChange={this.toSearch}
-                    ></input>
-                  </label>
-                </form>
-              </label>
+              <form>
+                <label>
+                  Search Year 1998-2014:
+                  <input
+                    type="text"
+                    className="searchbar"
+                    onChange={this.toSearch}
+                  ></input>
+                </label>
+              </form>
+              <form>
+                <label>
+                  Search Country:
+                  <input
+                    type="text"
+                    className="searchbarCountry"
+                    onChange={this.toSearchCountry}
+                  ></input>
+                </label>
+              </form>
             </div>
             <div className="labels">
               <h2>Country</h2>

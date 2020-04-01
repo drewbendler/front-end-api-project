@@ -29,7 +29,7 @@ class GlacierData extends Component {
       let dataset = this.state.data.map(item => {
         return (
           <div className="glacierData-grid">
-            <div className="meanmass">{item.MeanMass}</div>
+            <div className="meanmass">{item.MeanMass + '%'}</div>
             <div className="observations">{item.Observations}</div>
             <div className="year">{item.Year}</div>
           </div>
